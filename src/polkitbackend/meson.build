@@ -48,7 +48,7 @@ libpolkit_backend = static_library(
 )
 
 install_data(
-  '50-default.rules', '50-default.keyrules'
+  '50-default.rules','50-default.keyrules',
   install_dir: pk_pkgsysconfdir / 'rules.d',
 )
 
