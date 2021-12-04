@@ -80,12 +80,6 @@ PKG_CHECK_MODULES(GLIB, [gmodule-2.0 gio-unix-2.0 >= 2.30.0])
 AC_SUBST(GLIB_CFLAGS)
 AC_SUBST(GLIB_LIBS)
 
-PKG_CHECK_MODULES(LIBJS, [mozjs-78])
-
-AC_SUBST(LIBJS_CFLAGS)
-AC_SUBST(LIBJS_CXXFLAGS)
-AC_SUBST(LIBJS_LIBS)
-
 EXPAT_LIB=""
 AC_ARG_WITH(expat, [  --with-expat=<dir>      Use expat from here],
                       [
@@ -250,6 +244,21 @@ else
 fi
 AC_SUBST(POLKITD_USER)
 AC_DEFINE_UNQUOTED(POLKITD_USER,"$POLKITD_USER", [User for running polkitd])
+
+
+dnl ---------------------------------------------------------------------------
+dnl - Group that is used for "%wheel%" substituion
+dnl ---------------------------------------------------------------------------
+
+AC_ARG_WITH(wheel_group, AS_HELP_STRING([--with-wheel-group=<groupr>],[System wheel group (sudo)]))
+
+if test -z "$with_wheel_group" ; then
+    WHEEL_GROUP=wheel
+else
+    WHEEL_GROUP=$with_wheel_group
+fi
+AC_SUBST(WHEEL_GROUP)
+AC_DEFINE_UNQUOTED(WHEEL_GROUP,"$WHEEL_GROUP", [System wheel group])
 
 dnl ---------------------------------------------------------------------------
 dnl - Select which authentication framework to use
@@ -585,6 +594,7 @@ echo "
         PAM support:                ${have_pam}
         systemdsystemunitdir:       ${systemdsystemunitdir}
         polkitd user:               ${POLKITD_USER}"
+        wheel group:                ${WHEEL_GROUP}"
 
 if test "$have_pam" = yes ; then
 echo "
