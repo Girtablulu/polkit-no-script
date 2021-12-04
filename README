@@ -1,0 +1,54 @@
+OVERVIEW
+========
+
+polkit is a toolkit for defining and handling authorizations.  It is
+used for allowing unprivileged processes to speak to privileged
+processes.
+
+
+DOCUMENTATION
+=============
+
+Latest documentation, reference manual and API description of polkit can be found at
+
+ https://www.freedesktop.org/software/polkit/docs/latest/
+
+
+RELEASES
+========
+
+Older releases of polkit (until 0.120) are available in compressed tarballs from
+
+ http://www.freedesktop.org/software/polkit/releases/
+
+Latest releases are available in compressed tarballs from
+
+ https://gitlab.freedesktop.org/polkit/polkit/releases
+
+
+To verify the authenticity of the compressed tarball, use this command
+
+ $ gpg --verify polkit-$(VERSION).tar.gz.sign polkit-$(VERSION).tar.gz
+ gpg: Signature made Tue 23 Apr 2019 04:19:29 PM CEST using RSA key ID FFDCE258
+ gpg: Good signature from "Jan Rybar (Red Hat) <jrybar@redhat.com>"
+
+Public key available here
+ http://keys.gnupg.net/pks/lookup?op=get&search=0x8CEB3030FFDCE258
+
+
+BUGS and DEVELOPMENT
+====================
+
+Please report non-security bugs via the freedesktop.org GitLab at
+
+ https://gitlab.freedesktop.org/polkit/polkit/issues
+
+
+SECURITY ISSUES
+===============
+
+Please report any security issues not yet known to public
+by creating new issue and checking the "This issue is confidential" checkbox.
+
+ https://gitlab.freedesktop.org/polkit/polkit/issues
+
