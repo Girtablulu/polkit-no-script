@@ -133,7 +133,6 @@ expat_dep = dependency('expat')
 assert(cc.has_header('expat.h', dependencies: expat_dep), 'Can\'t find expat.h. Please install expat.')
 assert(cc.has_function('XML_ParserCreate', dependencies: expat_dep), 'Can\'t find expat library. Please install expat.')
 
-mozjs_dep = dependency('mozjs-78')
 
 dbus_dep = dependency('dbus-1', required: false)
 dbus_policydir = pk_prefix / pk_datadir / 'dbus-1/system.d'
