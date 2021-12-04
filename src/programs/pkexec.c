@@ -346,19 +346,27 @@ is_valid_shell (const gchar *shell)
   gchar **shells;
   GError *error;
   guint n;
+  const gchar *shellFile = NULL;
 
   ret = FALSE;
 
   contents = NULL;
   shells = NULL;
 
+  if (g_file_test ("/etc/shells", G_FILE_TEST_EXISTS))
+     {
+       shellFile = "/etc/shells";
+     } else {
+       shellFile = "/usr/share/defaults/etc/shells";
+     }
+
   error = NULL;
-  if (!g_file_get_contents ("/etc/shells",
+  if (!g_file_get_contents (shellFile,
                             &contents,
                             NULL, /* gsize *length */
                             &error))
     {
-      g_printerr ("Error getting contents of /etc/shells: %s\n", error->message);
+      g_printerr ("Error getting contents of %s: %s\n", shellFile, error->message);
       g_error_free (error);
       goto out;
     }
