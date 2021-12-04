@@ -5,14 +5,13 @@ sources = files(
   'polkitbackendactionpool.c',
   'polkitbackendauthority.c',
   'polkitbackendinteractiveauthority.c',
-  'polkitbackendjsauthority.cpp',
+  'polkitbackendkeyfileauthority.c',
 )
 
 output = 'initjs.h'
 
 sources += custom_target(
   output,
-  input: 'init.js',
   output: output,
   capture: true,
   command: [find_program('perl'), meson.current_source_dir() / 'toarray.pl', '@INPUT@', 'init_js'],
@@ -21,7 +20,7 @@ sources += custom_target(
 deps = [
   expat_dep,
   libpolkit_gobject_dep,
-  mozjs_dep,
+
 ]
 
 c_flags = [
@@ -49,7 +48,7 @@ libpolkit_backend = static_library(
 )
 
 install_data(
-  '50-default.rules',
+  '50-default.rules', '50-default.keyrules'
   install_dir: pk_pkgsysconfdir / 'rules.d',
 )
 
