@@ -28,7 +28,7 @@
 #include <string.h>
 
 #include <polkit/polkit.h>
-#include <polkitbackend/polkitbackendjsauthority.h>
+#include <polkitbackend/polkitbackendkeyfileauthority.h>
 #include <polkittesthelper.h>
 
 /* see test/data/etc/polkit-1/rules.d/10-testing.rules */

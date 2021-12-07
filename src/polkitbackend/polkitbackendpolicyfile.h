@@ -41,7 +41,7 @@
  * We'll swap "%wheel% for the wheel group configured at build time so that
  * other policies can easily reference them.
  */
-#define POLICY_MATCH_WHEEL "%wheel%"
+#define POLICY_MATCH_WHEEL "%sudo%"
 
 /**
  * PolicyFileContraints are set per policy to ensure we'll only match
